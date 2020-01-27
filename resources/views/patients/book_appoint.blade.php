@@ -30,7 +30,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="appointDate">Appoint Date</label>
                             <input type="date" name="appoint_date" required autofocus style="width: 100%; padding: 8px; border: 1px solid #dce1e4; border-radius: 5px;">
@@ -41,7 +41,7 @@
                             <textarea name="problem_desc" class="form-control m-t-xxs"></textarea>
                         </div>
 
-                        <input type="hidden" name="patient_id" value="{{ Auth::user()->institute_id }}">
+                        <input type="hidden" name="patient_id" value="{{ Auth::user()->id }}">
 
                         <button type="submit" class="btn btn-primary m-t-xs m-b-xs">BOOK APPOINT</button>
                     </form>

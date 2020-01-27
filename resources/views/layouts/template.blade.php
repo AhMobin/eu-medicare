@@ -32,6 +32,16 @@
     <link rel="stylesheet" href="{{ asset('public/template/css/custom.css') }}">
     <!-- Extra style -->
     <link rel="stylesheet" href="{{ asset('public/template/css/extra.css') }}">
+    <!-- Toastr Style -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <!-- Botman Style  -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css"> -->
+    <!-- <script>
+	    var botmanWidget = {
+	        aboutText: 'ssdsd',
+	        introMessage: "✋ Hi! I'm form codechief.org"
+	    };
+    </script> -->
 
 
     <style>
@@ -44,6 +54,7 @@
             box-sizing: border-box;
             pointer-events: none;
         }
+
         .dept_search{
             position: absolute;
             top: 45%;
@@ -215,22 +226,26 @@
                             <nav class="main__menu__nav hidden-xs hidden-sm">
                                 <ul class="main__menu">
                                     <!-- <li class="drop"><a href="index.html">Home</a></li> -->
-                                    <li class="drop"><a href="#">about</a>
-                                    <li class="drop"><a href="#">departments</a></li>
-                                    <li class="drop"><a href="#">doctors</a></li>
-                                    <li class="drop"><a href="#">services</a></li>
-                                    <li class="drop"><a href="#">contact</a></li>
+                                    <!-- <li class="drop"><a href="#about">about</a> -->
+                                    <li class="drop"><a href="#departments">departments</a></li>
+                                    <li class="drop"><a href="#doctors">doctors</a></li>
+                                    <li class="drop"><a href="#services">services</a></li>
+                                    <li><a href="#donations">Blood Donate</a></li>
+                                    <li><a href="#blogs">Blog</a></li>
+                                    <!-- <li class="drop"><a href="#">contact</a></li> -->
                                 </ul>
                             </nav>
 
                             <div class="mobile-menu clearfix visible-xs visible-sm">
                                 <nav id="mobile_dropdown">
                                     <ul>
-                                        <li><a href="#">about</a></li>
-                                        <li><a href="#">departments</a></li>
-                                        <li><a href="#">doctors</a></li>
-                                        <li><a href="#">services</a></li>
-                                        <li><a href="#">contact</a></li>
+                                        <!-- <li><a href="#">about</a></li> -->
+                                        <li><a href="#departments">departments</a></li>
+                                        <li><a href="#doctors">doctors</a></li>
+                                        <li><a href="#services">services</a></li>
+                                        <li><a href="#donations">Blood Donate</a></li>
+                                        <li><a href="#blogs">Blog</a></li>
+                                        <!-- <li><a href="#">contact</a></li> -->
                                     </ul>
                                 </nav>
                             </div>
@@ -298,19 +313,18 @@
 <!-- </div> -->
 <!-- End Offset Wrapper -->
 
-
 <!-- Start Header Background Video -->
 <section class="header_background">
-    <video autoplay muted loop>
-        <source src="{{ asset('public/template/video/bg-video.mp4') }}" type="video/mp4">
+    <video autoplay muted loop class="header_video">
+        <source src="{{ asset('public/template/video/vid.mp4') }}" type="video/mp4">
     </video>
     <div class="dept_search">
         <div class="container">
             <div class="row ">
                 <div class="col-md-11 col-lg-11 col-sm-10">
                     <div class="text-center text-light home_text">
-                        <h2>we care our future leaders at eu-medicare</h2>
-                        <p>Eastern University Medicare gives confidence to the well-being of all university members. And it has many experienced specialized doctors</p>
+                        <h2 style="color:#000;">we care our future leaders at eu-medicare</h2>
+                        <p style="color:#000;">Eastern University Medicare gives confidence to the well-being of all university members. And it has many experienced specialized doctors</p>
                     </div>
                 </div>
             </div>
@@ -335,7 +349,7 @@
 
 
 <!-- Start Category Area -->
-<section class="htc__category__area ptb--100">
+<section class="htc__category__area ptb--100" id="departments">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -420,7 +434,7 @@
 <!-- End Category Area -->
 
 <!-- Start Prize Good Area -->
-<section style="background: url('public/template/images/prio.JPG'); background-size: cover; 
+<section style="background: url('public/template/images/prio.JPG'); background-size: cover;
 height: 60vh;
 background-position: center center;" class="priority__sec">
     <div class="container">
@@ -447,7 +461,7 @@ background-position: center center;" class="priority__sec">
 
 
 <!-- Start Product Area -->
-<section class="ftr__product__area ptb--100">
+<section class="ftr__product__area ptb--100" id="doctors">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -616,81 +630,8 @@ background-position: center center;" class="priority__sec">
     </section>
     <!-- End Doctor Appointments Area -->
 
-
-{{-- 
-<!-- Start Testimonial Area -->
-<section class="htc__testimonial__area bg__cat--4 pt--20 pb--30">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section__title--2 text-center">
-                    <h2 class="title__line">Testimonials</h2>
-                    <p>But I must explain to you</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="ht__testimonial__activation clearfix">
-                <!-- Start Single Testimonial -->
-                <div class="col-lg-6 col-md-6 single__tes">
-                    <div class="testimonial">
-                        <div class="testimonial__thumb">
-                            <img src="{{ asset('public/template/images/test/client/1.png') }}" alt="testimonial images">
-                        </div>
-                        <div class="testimonial__details">
-                            <h4><a href="#">Mr.Mike Band</a></h4>
-                            <p>I’m up to something. Stay focused. The weather is amazing, walk with me through the pathway of more success. </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Testimonial -->
-                <!-- Start Single Testimonial -->
-                <div class="col-lg-6 col-md-6 single__tes">
-                    <div class="testimonial">
-                        <div class="testimonial__thumb">
-                            <img src="{{ asset('public/template/images/test/client/2.png') }}" alt="testimonial images">
-                        </div>
-                        <div class="testimonial__details">
-                            <h4><a href="#">Ms.Lucy Barton</a></h4>
-                            <p>I’m up to something. Stay focused. The weather is amazing, walk with me through the pathway of more success. </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Testimonial -->
-                <!-- Start Single Testimonial -->
-                <div class="col-lg-6 col-md-6 single__tes">
-                    <div class="testimonial">
-                        <div class="testimonial__thumb">
-                            <img src="{{ asset('public/template/images/test/client/1.png') }}" alt="testimonial images">
-                        </div>
-                        <div class="testimonial__details">
-                            <h4><a href="#">Ms.Lucy Barton</a></h4>
-                            <p>I’m up to something. Stay focused. The weather is amazing, walk with me through the pathway of more success. </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Testimonial -->
-                <!-- Start Single Testimonial -->
-                <div class="col-lg-6 col-md-6 single__tes">
-                    <div class="testimonial">
-                        <div class="testimonial__thumb">
-                            <img src="{{ asset('public/template/images/test/client/2.png') }}" alt="testimonial images">
-                        </div>
-                        <div class="testimonial__details">
-                            <h4><a href="#">Ms.Lucy Barton</a></h4>
-                            <p>I’m up to something. Stay focused. The weather is amazing, walk with me through the pathway of more success. </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Testimonial -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Testimonial Area --> --}}
-
 <!-- Start Top Rated Area -->
-<section class="top__rated__area bg__white pt--30 pb--50">
+<section class="top__rated__area bg__white pt--30 pb--50" id="services">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -741,7 +682,7 @@ background-position: center center;" class="priority__sec">
 
 
 <!-- Start Blood Donation Area -->
-<section style="background: url('{{ asset("public/template/images/blood-donor.jpg") }}'); 
+<section id="donations" style="background: url('{{ asset("public/template/images/blood-donor.jpg") }}');
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat">
@@ -758,19 +699,64 @@ background-position: center center;" class="priority__sec">
                 {{-- <div class="prize__inner"> --}}
                     <div class="ft__inner" style="margin-top:60px; margin-bottom: 30px;">
                         <div class="news__input">
-                            <form action="#" method="post">
+                            <form action="{{ route('blood.donation') }}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" placeholder="Your ID*">
+                                    <input type="text" name="donor_id" placeholder="Your ID*" class="@error('donor_id') is-invalid @enderror" value="{{ old('donor_id') }}" required autocomplete="donor_id" autofocus>
+                                    @error('donor_id')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong style="color: red">{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Your Name*">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="donor_name" placeholder="Your Name*" class="@error('donor_name') is-invalid @enderror" value="{{ old('donor_name') }}" required autocomplete="donor_name" autofocus>
+                                            @error('donor_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong style="color: red">{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" name="donor_email" placeholder="Your Email Address*" class="@error('donor_email') is-invalid @enderror" value="{{ old('donor_email') }}" required autocomplete="donor_email" autofocus>
+                                            @error('donor_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong style="color: red">{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" placeholder="Your Phone Number*">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="donor_phone" placeholder="Your Phone Number*" class="@error('donor_phone') is-invalid @enderror" value="{{ old('donor_phone') }}" required autocomplete="donor_phone" autofocus>
+                                            @error('donor_phone')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong style="color: red">{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="blood_group" placeholder="Your Blood Group*" class="@error('blood_group') is-invalid @enderror" value="{{ old('blood_group') }}" required autocomplete="blood_group" autofocus>
+                                            @error('blood_group')
+                                            <span class="invalid-feedback" role="alert">
+                                                    <strong style="color: red">{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="send__btn">
-                                    <a class="fr__btn" href="#">Interested</a>
+                                    <button type="submit" class="fr__btn" style="border:none;">Interested</button>
                                 </div>
                             </form>
                         </div>
@@ -806,7 +792,7 @@ background-position: center center;" class="priority__sec">
 {{--<!-- End Brand Area -->--}}
 
 <!-- Start Blog Area -->
-<section class="htc__blog__area bg__white ptb--100">
+<section class="htc__blog__area bg__white ptb--100" id="blogs">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -882,7 +868,7 @@ background-position: center center;" class="priority__sec">
                     </div>
                 </div>
                 <!-- End Single Blog -->
-                
+
             </div>
         </div>
     </div>
@@ -900,7 +886,7 @@ background-position: center center;" class="priority__sec">
                     <div class="footer">
                         <h2 class="title__line--2">ABOUT US</h2>
                         <div class="ft__details">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                            <p>EU MediCare is an online health care system for Eastern University members.</p>
                             <div class="ft__social__link">
                                 <ul class="social__link">
                                     <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
@@ -934,7 +920,7 @@ background-position: center center;" class="priority__sec">
                     </div>
                 </div>
                 <!-- End Single Footer Widget -->
-                
+
                 <!-- Start Single Footer Widget -->
                 <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
                     <!-- <div class="footer">
@@ -1007,6 +993,52 @@ background-position: center center;" class="priority__sec">
 <script src="{{ asset('public/template/js/waypoints.min.js') }}"></script>
 <!-- Main js file that contents all jQuery plugins activation. -->
 <script src="{{ asset('public/template/js/main.js') }}"></script>
+
+<!-- For toastr sweet alert message -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+<!-- <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> -->
+
+<script>
+        @if(Session::has('messege'))
+    var type="{{Session::get('alert-type','info')}}"
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('messege') }}");
+            break;
+        case 'success':
+            toastr.success("{{ Session::get('messege') }}");
+            break;
+        case 'warning':
+            toastr.warning("{{ Session::get('messege') }}");
+            break;
+        case 'error':
+            toastr.error("{{ Session::get('messege') }}");
+            break;
+    }
+    @endif
+</script>
+
+<script>
+    $(document).on("click", "#delete", function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+        swal({
+            title: "Are you Want to delete?",
+            text: "Once Delete, This will be Permanently Delete!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location.href = link;
+                } else {
+                    swal("Safe Data!");
+                }
+            });
+    });
+</script>
 
 </body>
 

@@ -38,7 +38,7 @@ class AdminController extends Controller
 
     public function approveUser($id){
         DB::table('users')->where('id',$id)->update(['status' => 1]);
-        
+
         $notification = array(
                 'messege' => 'User Request Approved',
                 'alert-type' => 'success'
@@ -48,7 +48,7 @@ class AdminController extends Controller
 
     public function rejectUser($id){
         DB::table('users')->where('id',$id)->update(['status' => 0]);
-        
+
         $notification = array(
                 'messege' => 'User Request Rejected',
                 'alert-type' => 'error'
@@ -61,7 +61,7 @@ class AdminController extends Controller
         return view('admin.members',compact('all'));
     }
 
-    
+
 
 
     //doctors
@@ -117,6 +117,161 @@ class AdminController extends Controller
         $notification = array(
             'messege' => 'Doctor Added Successfull',
             'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+
+    //all doctors
+    public function AllDoctors(){
+        $doctors = DB::table('doctors')
+                ->join('specializes','doctors.specialize_id','specializes.id')
+                ->select('doctors.*','specializes.specialize_name')
+                ->where('doctors.status', 1)
+                ->get();
+
+        $resign = DB::table('doctors')
+                ->join('specializes','doctors.specialize_id','specializes.id')
+                ->select('doctors.*','specializes.specialize_name')
+                ->where('doctors.status', 0)
+                ->get();
+        return view('admin.all_doctor',compact('doctors','resign'));
+    }
+
+    public function ViewDoctorDetails($id){
+        $doctor = DB::table('doctors')
+                ->join('specializes','doctors.specialize_id','specializes.id')
+                ->select('doctors.*','specializes.specialize_name')
+                ->where('doctors.id',$id)
+                ->first();
+        return view('admin.view_doctor',compact('doctor'));
+    }
+
+    public function EditDoctorDetails($id){
+        $doctor = DB::table('doctors')
+                ->join('specializes','doctors.specialize_id','specializes.id')
+                ->select('doctors.*','specializes.specialize_name')
+                ->where('doctors.id',$id)
+                ->first();
+        return view('admin.edit_doctor',compact('doctor'));
+    }
+
+    public function updateDoctor(Request $request, $id){
+        $validatedData = $request->validate([
+            'full_name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'consult_days' => 'required',
+            'consult_start' => 'required',
+            'consult_end' => 'required',
+        ]);
+        $data = array();
+        $data['full_name'] = $request->full_name;
+        $data['email'] = $request->email;
+        $data['phone'] = $request->phone;
+        $data['consult_days'] = $request->consult_days;
+        $data['consult_start'] = $request->consult_start;
+        $data['consult_end'] = $request->consult_end;
+
+        DB::table('doctors')->where('id',$id)->update($data);
+        $notification = array(
+            'messege' => 'Doctor Info Updated',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+
+    public function DeleteDoctor($id){
+        DB::table('doctors')->where('id',$id)->update(['status'=>0]);
+        $notification = array(
+            'messege' => 'Doctor Removed',
+            'alert-type' => 'error'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+    public function RejoinDoctor($id){
+        DB::table('doctors')->where('id',$id)->update(['status'=>1]);
+        $notification = array(
+            'messege' => 'Doctor Rejoined Success',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+
+    public function ManageAllAppointments(){
+        $doc = DB::table('doctors')->join('specializes','doctors.specialize_id','specializes.id')->select('doctors.*','specializes.specialize_name')
+        ->where('doctors.status',1)
+        ->get();
+
+        $appoints = DB::table('appointments')
+                    ->join('users','appointments.patient_id','users.id')
+                    ->join('specializes','appointments.specialize_id','specializes.id')
+                    ->join('doctors','appointments.doctor_id','doctors.id')
+                    ->select('appointments.*','users.institute_id','specializes.specialize_name','doctors.full_name')
+                    ->get();
+
+        return view('admin.appointments',compact('doc','appoints'));
+    }
+
+    public function ViewPatientAppoint($id){
+        $viewApp = DB::table('appointments')
+                    ->join('doctors','appointments.doctor_id','doctors.id')
+                    ->join('specializes','appointments.specialize_id','specializes.id')
+                    ->join('users','appointments.patient_id','users.id')
+                    ->select('appointments.*','doctors.full_name','doctors.email','doctors.phone','doctors.doctor_photo','specializes.specialize_name','users.name','users.institute_id','users.email','users.phone','users.gender','users.blood_group','users.user_photo')
+                    ->where('appointments.id',$id)
+                    ->first();
+        return view('admin.view_patient_appoint',compact('viewApp'));
+    }
+
+
+    public function ViewPatientPrescription($id){
+        $details = DB::table('appointments')
+                ->join('doctors','appointments.doctor_id','doctors.id')
+                ->join('specializes','appointments.specialize_id','specializes.id')
+                ->join('users','appointments.patient_id','users.id')
+                ->join('initial_tests','appointments.id','initial_tests.appoint_id')
+                ->join('problem_descs','appointments.id','problem_descs.appoint_id')
+                ->join('treatments','appointments.id','treatments.appoint_id')
+                ->select(
+                    'appointments.*', 'doctors.full_name','specializes.specialize_name',
+                    'users.name','users.institute_id','users.phone','users.email','users.blood_group','users.gender',
+                    'initial_tests.body_temperature','initial_tests.blood_pressure','initial_tests.blood_suger','initial_tests.weight','initial_tests.wbc','initial_tests.rbc','initial_tests.hgb','initial_tests.others',
+                    'problem_descs.problem','treatments.new_test_name','treatments.mdc_name_one','treatments.mdc_dose_one','treatments.mdc_dur_one', 'treatments.mdc_name_two','treatments.mdc_dose_two','treatments.mdc_dur_two','treatments.mdc_name_three','treatments.mdc_dose_three','treatments.mdc_dur_three','treatments.mdc_name_four','treatments.mdc_dose_four','treatments.mdc_dur_four','treatments.mdc_name_five','treatments.mdc_dose_five','treatments.mdc_dur_five','treatments.extra_mdc')
+                ->where('appointments.id',$id)->first();
+
+        return view('admin.view_prescription',compact('details'));
+    }
+
+    public function BloodDonorsList(){
+        $req = DB::table('blood_donors')->where('status',0)->get();
+        $done = DB::table('blood_donors')->where('status',1)->get();
+
+        return view('admin.blood_donors',compact('req','done'));
+    }
+
+    public function MailToDonate($id){
+        $email = DB::table('blood_donors')->where('id',$id)->first();
+        return view('admin.donation_mail',compact('email'));
+    }
+
+    public function bloodDonated($id){
+        DB::table('blood_donors')->where('id',$id)->update(['status'=>1]);
+        $notification = array(
+            'messege' => 'Moved to Donated List',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+    public function DeleteDonor($id){
+        DB::table('blood_donors')->where('id',$id)->delete();
+        $notification = array(
+            'messege' => 'Donor Deleted From List',
+            'alert-type' => 'error'
         );
         return Redirect()->back()->with($notification);
     }

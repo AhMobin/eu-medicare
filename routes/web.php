@@ -37,8 +37,17 @@ Route::prefix('doctor')->group(function() {
 
 
 ///********
-/// Admin Panel
+/// Front-end
 ///****************
+
+
+//blood donation
+Route::post('blood/donation/registration','FrontendController@BloodDonation')->name('blood.donation');
+
+
+///**********************
+/// Admin Panel - Backend
+///**************************
 
 ///users & patients
 
@@ -64,9 +73,39 @@ Route::post('add/new/specialize','Admin\AdminController@AddSpecialize')->name('a
 Route::get('add/new/doctor','Admin\AdminController@AddNewDoctor')->name('add.doctor');
 //add specialize
 Route::post('doctor/added','Admin\AdminController@StoreDoctor')->name('store.doctor');
+//all doctors
+Route::get('all/doctors','Admin\AdminController@AllDoctors')->name('all.doctors');
+//view doctor infos
+Route::get('view/doctor/details/{id}','Admin\AdminController@ViewDoctorDetails');
+//edit doctor infos
+Route::get('edit/doctor/details/{id}','Admin\AdminController@EditDoctorDetails');
+//update doctor infos
+Route::post('update/doctor/info/{id}','Admin\AdminController@updateDoctor');
+//delete doctor
+Route::get('delete/doctor/{id}','Admin\AdminController@DeleteDoctor');
+//rejoining doctor
+Route::get('rejoin/doctor/{id}','Admin\AdminController@RejoinDoctor');
+
+//manage appointments
+Route::get('manage/all/appointments','Admin\AdminController@ManageAllAppointments')->name('admin.manage.appointments');
+//view appoint
+Route::get('view/patient/query/{id}','Admin\AdminController@ViewPatientAppoint');
+//view visited patient infos
+Route::get('view/patient/prescribed/info/{id}','Admin\AdminController@ViewPatientPrescription');
 
 
+//blood donors
+Route::get('blood/donors','Admin\AdminController@BloodDonorsList')->name('requested.donors');
 
+
+//mail to donor
+Route::get('mail/for/donation/{id}','MailController@MailToDonate');
+
+
+//donation completed
+Route::get('donated/blood/{id}','Admin\AdminController@bloodDonated');
+//donor deleted
+Route::get('delete/donor/{id}','Admin\AdminController@DeleteDonor');
 
 
 //**********
@@ -74,14 +113,14 @@ Route::post('doctor/added','Admin\AdminController@StoreDoctor')->name('store.doc
 ////*************************
 
 Route::get('book/new/appointment','HomeController@bookAppoint')->name('book.appointment');
-
 //get doctor name for specialized by ajax
 Route::get('get/doctor/name/{specialize_id}','HomeController@getDoctorName');
-
 //book appointment
 Route::post('book/appointment','HomeController@bookAppointment')->name('book.patient.appoint');
-
-
+//medical history
+Route::get('patient/medical/history/','HomeController@medicalHistory')->name('patient.medical.history');
+//view appointment details
+Route::get('view/appointment/details/{id}','HomeController@viewDetails');
 
 
 //**********
@@ -99,10 +138,19 @@ Route::get('appoint/follow/up/{id}','Doctor\DoctorController@followUpAppointment
 Route::get('manage/doctor/appointments','Doctor\DoctorController@ManageAppoints')->name('manage.appointment');
 ///prescribe patients
 Route::get('prescribe/patient/{id}','Doctor\DoctorController@PrescribeNow');
-ROute::post('patient/initial/test/','Doctor\DoctorController@InitialTest');
-Route::post('patient/problem/','Doctor\DoctorController@PatientProblem');
-Route::post('patient/treatemt/','Doctor\DoctorController@PatientTreatment');
-Route::get('delete/patient/list/{patient_id}','Doctor\DoctorController@DeletePatient');
+//prescription stored
+Route::post('prescribe/patient/{id}','Doctor\DoctorController@PrescriptionStore');
+
+Route::get('delete/patient/list/{id}','Doctor\DoctorController@DeletePatient');
 
 ///appointment history
 Route::get('appointment/history/list','Doctor\DoctorController@AppointmentHistory')->name('appointment.history');
+//view appointment details
+Route::get('view/appoint/history/{id}','Doctor\DoctorController@appointmentDetails');
+
+
+
+
+//chatbot
+
+Route::match(['get', 'post'], '/botman', 'BotManController@handle');

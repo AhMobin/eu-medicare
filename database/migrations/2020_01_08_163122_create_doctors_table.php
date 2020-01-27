@@ -24,6 +24,7 @@ class CreateDoctorsTable extends Migration
             $table->string('consult_start');
             $table->string('consult_end');
             $table->string('doctor_photo')->nullable();
+            $table->integer('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

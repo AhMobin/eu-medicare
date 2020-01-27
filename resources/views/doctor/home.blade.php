@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
+
         <!-- Title -->
         <title>Doctor Panel | Dashboard | EU MediCare</title>
-        
+
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta charset="UTF-8">
         <meta name="csrf" value="{{ csrf_token() }}">
-        
+
         <!-- Styles -->
         <link href="{{ asset('public/backend/plugins/pace-master/themes/blue/pace-theme-flash.css') }}" rel="stylesheet"/>
         <link href="{{ asset('public/backend/plugins/uniform/css/default.css') }}" rel="stylesheet"/>
         <link href="{{ asset('public/backend/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/backend/plugins/fontawesome/css/font-awesome.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/backend/plugins/line-icons/simple-line-icons.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('public/backend/plugins/offcanvasmenueffects/css/menu_cornerbox.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('public/backend/plugins/waves/waves.min.css') }}" rel="stylesheet" type="text/css"/>	
+        <link href="{{ asset('public/backend/plugins/line-icons/simple-line-icons.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/backend/plugins/offcanvasmenueffects/css/menu_cornerbox.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/backend/plugins/waves/waves.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/backend/plugins/switchery/switchery.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/backend/plugins/3d-bold-navigation/css/style.css') }}" rel="stylesheet" type="text/css"/>
-        <link href="{{ asset('public/backend/plugins/slidepushmenus/css/component.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('public/backend/plugins/weather-icons-master/css/weather-icons.min.css') }}" rel="stylesheet" type="text/css"/>	
-        <link href="{{ asset('public/backend/plugins/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css"/>	
-        	
+        <link href="{{ asset('public/backend/plugins/slidepushmenus/css/component.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/backend/plugins/weather-icons-master/css/weather-icons.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('public/backend/plugins/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css"/>
+
         <!-- Theme Styles -->
         <link href="{{ asset('public/backend/css/meteor.min.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/backend/css/layers/dark-layer.css') }}" class="theme-color" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('public/backend/css/custom.css') }}" rel="stylesheet" type="text/css"/>
-        
+
         <!-- Toastr Style -->
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-        
+
         <script src="{{ asset('public/backend/plugins/3d-bold-navigation/js/modernizr.js') }}"></script>
 
-        
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        
+
     </head>
 
     <body class="compact-menu">
@@ -49,7 +49,7 @@
         @endphp
 
         <div class="overlay"></div>
-        
+
         <form class="search-form" action="#" method="GET">
             <div class="input-group">
                 <input type="text" name="search" class="form-control search-input" placeholder="Type something...">
@@ -58,7 +58,7 @@
                 </span>
             </div><!-- Input Group -->
         </form><!-- Search Form -->
-        
+
         <main class="page-content content-wrap">
             <div class="navbar">
                 <div class="navbar-inner">
@@ -76,12 +76,12 @@
                     <div class="topmenu-outer">
                         <div class="top-menu">
                             <ul class="nav navbar-nav navbar-left">
-                                <li>		
+                                <li>
                                     <a href="javascript:void(0);" class="sidebar-toggle"><i class="icon-arrow-left"></i></a>
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li>	
+                                <li>
                                     <a href="javascript:void(0);" class="show-search"><i class="icon-magnifier"></i></a>
                                 </li>
 
@@ -131,14 +131,14 @@
             <div class="page-inner">
                 <!-- Start Content Area -->
 
-                
+
 
                     @yield('content')
 
 
                 <!-- End Content Area -->
                 <div class="page-footer">
-                    <p class="no-s">Developer @copy; </i> Abu Horaira Mobin</p>
+                    <p class="no-s">Developer &copy; </i> Abu Horaira Mobin</p>
                 </div>
             </div><!-- Page Inner -->
         </main><!-- Page Content -->
@@ -169,8 +169,8 @@
         <script src="{{ asset('public/backend/plugins/chartjs/Chart.bundle.min.js') }}"></script>
         <script src="{{ asset('public/backend/js/meteor.min.js') }}"></script>
         <script src="{{ asset('public/backend/js/pages/dashboard.js') }}"></script>
-        
- 
+
+
 
 
     {{-- For toastr sweet alert message --}}
