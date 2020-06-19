@@ -36,11 +36,19 @@ Route::prefix('doctor')->group(function() {
 }) ;
 
 
+
+//send sms
+Route::get('sms/form','SMSController@SMSForm');
+Route::post('sms','SMSController@SendSMS')->name('send.sms');
+
+
+
 ///********
 /// Front-end
 ///****************
 
-
+//emergency blood request
+Route::post('emergency/blood','FrontendController@EmergencyBlood')->name('emergency.blood');
 //blood donation
 Route::post('blood/donation/registration','FrontendController@BloodDonation')->name('blood.donation');
 
@@ -96,16 +104,25 @@ Route::get('view/patient/prescribed/info/{id}','Admin\AdminController@ViewPatien
 
 //blood donors
 Route::get('blood/donors','Admin\AdminController@BloodDonorsList')->name('requested.donors');
-
-
+//emergency requests
+Route::get('requested/emergency/blood/','Admin\AdminController@EmergencyCheckBlood')->name('emergency.requests');
+//mail to donors
+Route::get('mail/to/donors/{req_blood_group}','Admin\AdminController@MailForEmergency');
+//Remove Requst From List
+Route::get('remove/request/{id}','Admin\AdminController@RemoveRequest');
 //mail to donor
-Route::get('mail/for/donation/{id}','MailController@MailToDonate');
+Route::get('mail/for/donation/{id}','Admin\AdminController@MailToDonate');
 
 
 //donation completed
 Route::get('donated/blood/{id}','Admin\AdminController@bloodDonated');
 //donor deleted
 Route::get('delete/donor/{id}','Admin\AdminController@DeleteDonor');
+
+
+//send mail
+//mail to donor
+Route::get('send', 'Admin\AdminController@sendToDonor');
 
 
 //**********
@@ -147,10 +164,3 @@ Route::get('delete/patient/list/{id}','Doctor\DoctorController@DeletePatient');
 Route::get('appointment/history/list','Doctor\DoctorController@AppointmentHistory')->name('appointment.history');
 //view appointment details
 Route::get('view/appoint/history/{id}','Doctor\DoctorController@appointmentDetails');
-
-
-
-
-//chatbot
-
-Route::match(['get', 'post'], '/botman', 'BotManController@handle');

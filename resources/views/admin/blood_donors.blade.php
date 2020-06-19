@@ -31,7 +31,7 @@
                                     <td>{{ $row->donor_name }}</td>
                                     <td>{{ $row->donor_phone }}</td>
                                     <td>{{ $row->donor_email }}</td>
-                                    <td>{{ $row->blood_group }}</td>
+                                    <td>{{ strtoupper($row->blood_group) }}</td>
                                     <td>
                                         <a href="{{ url('mail/for/donation/'.$row->id) }}" class="btn btn-danger"> <i class="icon icon-drop"></i></a>
                                         <a href="{{ url('donated/blood/'.$row->id) }}" class="btn btn-sm btn-info" title="Donated"><i class="fa fa-thumbs-up"></i></a>
@@ -70,7 +70,7 @@
                                     <td>{{ $row->donor_name }}</td>
                                     <td>{{ $row->donor_phone }}</td>
                                     <td>{{ $row->donor_email }}</td>
-                                    <td>{{ $row->blood_group }}</td>
+                                    <td>{{ strtoupper($row->blood_group) }}</td>
                                     <td>{{ $row->updated_at }}</td>
                                     <td>
                                         <a href="{{ url('mail/for/donation/'.$row->id) }}" class="btn btn-sm btn-danger" title="Call To Donate"><i class="icon icon-drop"></i></a>

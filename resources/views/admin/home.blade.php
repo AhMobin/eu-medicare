@@ -118,7 +118,7 @@
                     <ul class="menu accordion-menu">
                     <li class="active"><a href="{{ route('admin.dashboard') }}" class="waves-effect waves-button"><span class="menu-icon icon-home"></span><p>Dashboard</p><span class="active-page"></span></a></li>
 
-                    <li><a href="profile.html" class="waves-effect waves-button"><span class="menu-icon icon-user"></span><p>Profile</p></a></li>
+                    <li><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-user"></span><p>Profile</p></a></li>
 
                     <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-envelope-open"></span><p>Members</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
@@ -144,17 +144,17 @@
 
                     <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-grid"></span><p>Blood Donate</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
-                            <li><a href="{{ route('requested.donors') }}">Requested Donors</a></li>
-                            <!-- <li><a href="table-data.html">Data Tables</a></li> -->
+                            <li><a href="{{ route('requested.donors') }}">Interested Donors</a></li>
+                            <li><a href="{{ route('emergency.requests') }}">Emergency Request</a></li>
                         </ul>
                     </li>
 
-                    <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-grid"></span><p>Settings</p><span class="arrow"></span></a>
+                    <!-- <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-grid"></span><p>Settings</p><span class="arrow"></span></a>
                         <ul class="sub-menu">
                             <li><a href="#">Static Tables</a></li>
                             <li><a href="#">Responsive Tables</a></li>
                             <li><a href="#">Data Tables</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     </ul>
                 </div><!-- Page Sidebar Inner -->

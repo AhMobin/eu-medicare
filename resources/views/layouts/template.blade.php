@@ -34,20 +34,12 @@
     <link rel="stylesheet" href="{{ asset('public/template/css/extra.css') }}">
     <!-- Toastr Style -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-    <!-- Botman Style  -->
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/assets/css/chat.min.css"> -->
-    <!-- <script>
-	    var botmanWidget = {
-	        aboutText: 'ssdsd',
-	        introMessage: "✋ Hi! I'm form codechief.org"
-	    };
-    </script> -->
 
 
     <style>
         .header_background video {
             width: 100%;
-            max-height: 90vh;
+            max-height: 80vh;
             background-size: cover;
             position: relative;
             object-fit: cover;
@@ -57,16 +49,21 @@
 
         .dept_search{
             position: absolute;
-            top: 45%;
+            top: 35%;
             left: 8%;
         }
         .home_text{
             text-transform: uppercase;
-            color: white;
+            /* color: white; */
+            font-weight: 500;
+            background: #fff;
+            opacity: 0.6;
+            padding: 10px;
         }
         .home_text h2, p{
-            color: white;
+            color: black;
             line-height: 2rem;
+            margin-top: 0;
         }
         .search i{
             font-size: 1.4rem;
@@ -194,6 +191,19 @@
             display: block;
         }
 
+        .emg_blood{
+            margin-top: 15px;
+            margin-left: 40%;
+            /* margin-right: 50%; */
+            /* transform: translate(-50%); */
+        }
+        .emg_btn{
+            background-color: maroon;
+            width: 210px;
+            text-align: center;
+            border: none;
+        }
+
     </style>
 
 
@@ -289,29 +299,6 @@
 
 <div class="body__overlay"></div>
 <!-- Start Offset Wrapper -->
-<!-- <div class="offset__wrapper"> -->
-<!-- Start Search Popap -->
-<!--  <div class="search__area">
-     <div class="container" >
-         <div class="row" >
-             <div class="col-md-12" >
-                 <div class="search__inner">
-                     <form action="#" method="get">
-                         <input placeholder="Search here... " type="text">
-                         <button type="submit"></button>
-                     </form>
-                     <div class="search__close__btn">
-                         <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div> -->
-<!-- End Search Popap -->
-
-<!-- </div> -->
-<!-- End Offset Wrapper -->
 
 <!-- Start Header Background Video -->
 <section class="header_background">
@@ -326,11 +313,103 @@
                         <h2 style="color:#000;">we care our future leaders at eu-medicare</h2>
                         <p style="color:#000;">Eastern University Medicare gives confidence to the well-being of all university members. And it has many experienced specialized doctors</p>
                     </div>
+                    <div class="emg_blood">
+                        <!-- <a class="fr__btn emg_btn" href="#">Emergency Blood</a> -->
+                        <!-- <button type="button" class="fr__btn emg_btn" data-toggle="modal" data-target="#exampleModalCenter">Emergency Blood</button> -->
+                        <a href="" class="fr__btn emg_btn" data-toggle="modal" data-target="#modaldemo3">Emergency Blood</a>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <form action="#" method="post">
+        <!-- add-new button model -->
+        <div id="modaldemo3" class="modal fade">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content tx-size-sm">
+                    <div class="modal-header pd-x-20">
+                        <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Brand Add</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('emergency.blood') }}" method="post">
+                        @csrf
+                        <div class="modal-body pd-20">
+                            <div class="form-group">
+                                <label for="requestedBlood">Request For Blood Group</label>
+                                <input type="text" name="req_blood_group" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Your Phone Number</label>
+                                <input type="text" name="req_from_number" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Location</label>
+                                <input type="text" name="patient_location" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary pd-x-20" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-info pd-x-20">Request</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- modal-dialog -->
+        </div><!-- modal -->
+
+<!-- Modal -->
+<!--
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Request Emergency Blood</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        All Fields Are Required.
+            <form action="{{ route('emergency.blood') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="requestedBlood">Request For Blood Group</label>
+                    <input type="text" name="req_blood_group" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Your Phone Number</label>
+                    <input type="text" name="req_from_number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Location</label>
+                    <input type="text" name="patient_location" class="form-control">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" class="form-control">Request</button>
+                </div>
+                <!- <button type="submit" class="btn btn-primary">Request</button> -->
+            <!-- </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div> - - >
+</div> -->
+
+        <!-- <form action="#" method="post">
             <div class="container">
                 <div class="row m-auto no-gutters">
                     <div class="col-md-6 col-lg-10 col-sm-8 search-field m-auto">
@@ -341,7 +420,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form> -->
     </div>
 </section>
 <!-- End Header Background Video -->
@@ -553,8 +632,6 @@ background-position: center center;" class="priority__sec">
 <!-- End Product Area -->
 
 
-
-
     <!-- Start Doctors Appointments Area -->
     <section class="htc__testimonial__area bg__cat--4 pt--20 pb--30">
         <div class="container">
@@ -572,7 +649,7 @@ background-position: center center;" class="priority__sec">
                     <div class="col-lg-6 col-md-6 single__tes">
                         <div class="testimonial">
                             <div class="testimonial__thumb">
-                                <img class="app_doc" src="{{ asset('public/template/images/doctors/nawshin-nahar.jpg') }}" alt="testimonial images">
+                                <img class="app_doc" style="width: 90px" src="{{ asset('public/template/images/doctors/nawshin-nahar.jpg') }}" alt="testimonial images">
                             </div>
                             <div class="testimonial__details">
                                 <h4><a href="#">Nowshin Nahar</a></h4>
@@ -586,7 +663,7 @@ background-position: center center;" class="priority__sec">
                     <div class="col-lg-6 col-md-6 single__tes">
                         <div class="testimonial">
                             <div class="testimonial__thumb">
-                                <img class="app_doc" src="{{ asset('public/template/images/doctors/Nasrin-Zulfikar.jpg') }}" alt="testimonial images">
+                                <img class="app_doc" style="width: 90px" src="{{ asset('public/template/images/doctors/Nasrin-Zulfikar.jpg') }}" alt="testimonial images">
                             </div>
                             <div class="testimonial__details">
                                 <h4><a href="#">Dr. Nasrin Zulfikar</a></h4>
@@ -600,7 +677,7 @@ background-position: center center;" class="priority__sec">
                     <div class="col-lg-6 col-md-6 single__tes">
                         <div class="testimonial">
                             <div class="testimonial__thumb">
-                                <img class="app_doc" src="{{ asset('public/template/images/doctors/DR.-ZIAUL-KARIM.jpg') }}" alt="testimonial images">
+                                <img class="app_doc" style="width: 90px" src="{{ asset('public/template/images/doctors/DR.-ZIAUL-KARIM.jpg') }}" alt="testimonial images">
                             </div>
                             <div class="testimonial__details">
                                 <h4><a href="#">Dr. Ziaul Karim</a></h4>
@@ -614,7 +691,7 @@ background-position: center center;" class="priority__sec">
                     <div class="col-lg-6 col-md-6 single__tes">
                         <div class="testimonial">
                             <div class="testimonial__thumb">
-                                <img class="app_doc" src="{{ asset('public/template/images/doctors/nurul-ashraf.JPG') }}" alt="testimonial images">
+                                <img class="app_doc" style="width: 90px" src="{{ asset('public/template/images/doctors/nurul-ashraf.JPG') }}" alt="testimonial images">
                             </div>
                             <div class="testimonial__details">
                                 <h4><a href="#">Dr. Mohammad Nurul Ashraf</a></h4>
@@ -997,7 +1074,6 @@ background-position: center center;" class="priority__sec">
 <!-- For toastr sweet alert message -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
-<!-- <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script> -->
 
 <script>
         @if(Session::has('messege'))

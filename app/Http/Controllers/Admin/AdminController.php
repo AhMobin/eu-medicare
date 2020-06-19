@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\SendMails;
 use Illuminate\Http\Request;
 use DB;
 use Hash;
+use Mail;
+use App\Mail\EmergencyBloodMail;
 
 class AdminController extends Controller
 {
@@ -27,7 +30,6 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
-
 
     ///users and patients
 
@@ -255,7 +257,12 @@ class AdminController extends Controller
 
     public function MailToDonate($id){
         $email = DB::table('blood_donors')->where('id',$id)->first();
-        return view('admin.donation_mail',compact('email'));
+        //return view('admin.donation_mail',compact('email'));
+        $notification = array(
+            'messege' => 'Mail Send To Donor',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 
     public function bloodDonated($id){
@@ -274,5 +281,55 @@ class AdminController extends Controller
             'alert-type' => 'error'
         );
         return Redirect()->back()->with($notification);
+    }
+
+    public function EmergencyCheckBlood(){
+        $emrg = DB::table('emergency_bloods')->where('status',0)->get();
+        return view('admin.emergency_blood',compact('emrg'));
+    }
+
+    public function MailForEmergency($blood){
+        $blood = DB::table('blood_donors')
+        ->join('emergency_bloods','blood_donors.blood_group','emergency_bloods.req_blood_group')
+        ->select('blood_donors.*','emergency_bloods.req_from_number')
+        ->where('blood_donors.blood_group',$blood)->get();
+        //return response()->json($blood);
+        $notification = array(
+            'messege' => 'Mail Send To Donors',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
+
+        // foreach($blood as $donor){
+        //     Mail::to($donor->donor_email)->send(new EmergencyBloodMail($donor));
+        // }
+
+
+    }
+
+    public function RemoveRequest($id){
+        DB::table('emergency_bloods')->where('id',$id)->delete();
+        $notification = array(
+            'messege' => 'Request Removed From List',
+            'alert-type' => 'error'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+
+
+    public function sendToDonor(){
+        {
+            $donors = DB::table('blood_donors')->first();
+            $SendDonors = [
+                'greeting' => 'Hi Artisan',
+                'body' => 'This is my first notification from ItSolutionStuff.com',
+                'thanks' => 'Thank you for using ItSolutionStuff.com tuto!',
+                'actionText' => 'View My Site',
+                'actionURL' => url('/'),
+            ];
+            Notification::send($donors, new SendMails($SendDonors));
+            dd('done');
+        }
     }
 }
