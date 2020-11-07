@@ -20,15 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4c2f911-7ad3-4e40-8bcf-4e8e48118c9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/donors_invite.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Doctor/DoctorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Doctor/DoctorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/appointments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/appointments.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/doctor/appoint_history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/doctor/appoint_history.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/doctor/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/doctor/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/doctor/manage_appoints.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/doctor/manage_appoints.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/health_care.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/blood_donors.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/blood_donors.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +198,7 @@
       <updated>1578498577898</updated>
       <workItem from="1578498584268" duration="5975000" />
       <workItem from="1582449341254" duration="1333000" />
-      <workItem from="1604746091665" duration="1162000" />
+      <workItem from="1604746091665" duration="3405000" />
     </task>
     <servers />
   </component>

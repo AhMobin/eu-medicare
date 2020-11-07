@@ -40,6 +40,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
+                            <a href="{{ url('invite-donors') }}" class="btn btn-primary">Invite Donors</a>
                         </table>
                     </div>
                 </div>

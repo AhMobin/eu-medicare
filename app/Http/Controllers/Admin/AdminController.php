@@ -9,6 +9,7 @@ use DB;
 use Hash;
 use Mail;
 use App\Mail\EmergencyBloodMail;
+use App\Mail\InviteDonors;
 
 class AdminController extends Controller
 {
@@ -254,6 +255,18 @@ class AdminController extends Controller
         $done = DB::table('blood_donors')->where('status',1)->get();
 
         return view('admin.blood_donors',compact('req','done'));
+    }
+
+    public function inviteToDonors(){
+        $donors = DB::table('blood_donors')->where('status',0)->get();
+        foreach ($donors as $donor){
+            Mail::to($donor->donor_email)->send(new InviteDonors());
+        }
+        $notification = array(
+            'messege' => 'Mail Send To Donors',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 
     public function MailToDonate($id){

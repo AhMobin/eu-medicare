@@ -107,6 +107,7 @@ Route::get('blood/donors','Admin\AdminController@BloodDonorsList')->name('reques
 //emergency requests
 Route::get('requested/emergency/blood/','Admin\AdminController@EmergencyCheckBlood')->name('emergency.requests');
 //mail to donors
+Route::get('invite-donors','Admin\AdminController@inviteToDonors');
 Route::get('mail/to/donors/{req_blood_group}','Admin\AdminController@MailForEmergency');
 //Remove Requst From List
 Route::get('remove/request/{id}','Admin\AdminController@RemoveRequest');
