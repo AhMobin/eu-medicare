@@ -27,7 +27,7 @@
                                 @foreach($approved as $row)
                                 <tr>
                                     <td>{{ $row->id }}</td>
-                                    <td>{{ $row->patient_id }}</td>
+                                    <td>{{ $row->institute_id }}</td>
                                     <td>{{ $row->problem_desc }}</td>
                                     <td>{{ $row->appoint_date }}</td>
                                     <td>

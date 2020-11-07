@@ -26,7 +26,7 @@
                             <tbody>
                                 @foreach($appoints as $row)
                                 <tr>
-                                    <td>{{ $row->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $row->institute_id }}</td>
                                     <td>{{ $row->specialize_name }}</td>
                                     <td>{{ $row->full_name }}</td>

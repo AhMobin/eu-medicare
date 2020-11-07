@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2020 at 03:44 PM
+-- Generation Time: Nov 06, 2020 at 12:54 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -70,12 +70,12 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `patient_id`, `specialize_id`, `doctor_id`, `appoint_date`, `problem_desc`, `status`, `created_at`, `updated_at`) VALUES
-(1, '1', 1, 4, '2020-01-26', 'discuss about some problems', 2, '2020-01-26 05:35:00', NULL),
-(2, '2', 1, 4, '2020-01-26', 'general problem', 2, '2020-01-26 07:00:00', NULL),
+(1, '1', 1, 4, '2020-01-26', 'discuss about some problems', 2, '2020-01-25 23:35:00', NULL),
+(2, '2', 1, 4, '2020-01-26', 'general problem', 2, '2020-01-26 01:00:00', NULL),
 (3, '4', 3, 3, '2020-01-28', 'Muscle problem', 1, NULL, NULL),
-(4, '7', 4, 5, '2020-01-28', 'Internal Problem', 2, '2020-01-25 17:56:38', NULL),
-(5, '3', 1, 4, '2020-01-31', 'Tonsil problem', 0, '2020-01-26 15:07:25', NULL),
-(6, '4', 2, 2, '2020-01-29', 'Frustration depression', 0, '2020-01-26 18:52:33', NULL);
+(4, '7', 4, 5, '2020-01-28', 'Internal Problem', 2, '2020-01-25 11:56:38', NULL),
+(5, '3', 1, 4, '2020-01-31', 'Tonsil problem', 0, '2020-01-26 09:07:25', NULL),
+(6, '4', 2, 2, '2020-01-29', 'Frustration depression', 0, '2020-01-26 12:52:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -100,12 +100,12 @@ CREATE TABLE `blood_donors` (
 --
 
 INSERT INTO `blood_donors` (`id`, `donor_id`, `donor_name`, `donor_phone`, `donor_email`, `blood_group`, `status`, `created_at`, `updated_at`) VALUES
-(1, '161400014', 'Abu Horaira Mobin', '01620327185', 'ahmobin1515@gmail.com', 'a+', 0, '2020-01-25 15:25:40', '2020-01-25 15:25:40'),
-(2, '161400022', 'Kudrate E Elahi', '0164569871', 'kudrat@mail.com', 'b-', 1, '2020-01-25 15:26:02', '2020-01-25 15:26:02'),
-(3, '161400001', 'Hussain Imam Shanto', '01234654789', 'shanto@mail.com', 'ab+', 0, '2020-01-25 15:26:55', '2020-01-25 15:26:55'),
-(4, '161400011', 'Syed Anas', '01236547896', 'anas@mail.com', 'a-', 0, '2020-01-25 15:27:22', '2020-01-25 15:27:22'),
-(5, '161400017', 'Rasif Ismam', '01236547896', 'rasif@mail.com', 'ab-', 1, '2020-01-25 18:03:05', '2020-01-25 18:03:05'),
-(6, '161400006', 'Kaniz Afrin', '01236547896', 'kaniz@mail.com', 'a-', 0, '2020-02-03 16:07:04', '2020-02-03 16:07:04');
+(1, '161400014', 'Abu Horaira Mobin', '01620327185', 'ahmobin1515@gmail.com', 'a+', 0, '2020-01-25 09:25:40', '2020-01-25 09:25:40'),
+(2, '161400022', 'Kudrate E Elahi', '0164569871', 'kudrat@mail.com', 'b-', 1, '2020-01-25 09:26:02', '2020-01-25 09:26:02'),
+(3, '161400001', 'Hussain Imam Shanto', '01234654789', 'shanto@mail.com', 'ab+', 0, '2020-01-25 09:26:55', '2020-01-25 09:26:55'),
+(4, '161400011', 'Syed Anas', '01236547896', 'anas@mail.com', 'a-', 0, '2020-01-25 09:27:22', '2020-01-25 09:27:22'),
+(5, '161400017', 'Rasif Ismam', '01236547896', 'rasif@mail.com', 'ab-', 1, '2020-01-25 12:03:05', '2020-01-25 12:03:05'),
+(6, '161400006', 'Kaniz Afrin', '01236547896', 'kaniz@mail.com', 'a-', 0, '2020-02-03 10:07:04', '2020-02-03 10:07:04');
 
 -- --------------------------------------------------------
 
@@ -403,13 +403,13 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `institute_id`, `name`, `phone`, `email`, `email_verified_at`, `gender`, `password`, `blood_group`, `user_photo`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, '161400014', 'Abu Horaira Mobin', '01620327185', 'ahmobin1515@gmail.com', NULL, 'male', '$2y$10$zAzNhiJnh6ymOX2oiwAZtuxqHHQI47akRPS96AYxMhznKTsv7htYa', 'A+', NULL, 1, NULL, NULL, NULL),
-(2, '161400001', 'Hussain Imam Shanto', '01517092758', 'hussain.imambd@gmail.com', NULL, 'male', '$2y$10$QaoLuzScxd6p2pnbe/cP7etVCEYxA5KJZpUVbfEoP2/fCgWqYX8g.', 'A-', NULL, 1, NULL, '2020-01-10 02:43:58', '2020-01-10 02:43:58'),
-(3, '161400011', 'Syed M R Anas', '01300586874', 'anas@mail.com', NULL, 'male', '$2y$10$ieiRPx07pnUmxGgesNY1sOeFk7PRClX.4OXkElWe3pHY41g.4.ejy', 'B+', NULL, 1, NULL, '2020-01-13 13:55:27', '2020-01-13 13:55:27'),
-(4, '161400022', 'Kudrat-E-Elahi Chawdhury', '01954844212', 'mridul@mail.com', NULL, 'male', '$2y$10$.1sUvPVpCTVtnnr1PL9YAOCfkZM5GMpYoyzg6XbqlHZqpryYJ3Tzy', 'B-', NULL, 1, NULL, '2020-01-13 14:01:53', '2020-01-13 14:01:53'),
-(5, '161400017', 'Rasif Ismam', '01688386763', 'rasif@mail.com', NULL, 'male', '$2y$10$aquFs7MyHarBea1kphbY3uPXiqYJGCzzOpGGCFILAJ87j2YwLfDEq', 'AB+', NULL, 0, NULL, '2020-01-17 07:50:56', '2020-01-17 07:50:56'),
-(6, '161400026', 'Afsana Munni', '01700762678', 'munni@mail.com', NULL, NULL, '$2y$10$VofzmoJK6UKYG0AQWMdEPeUWGXeqW4fTh.I/e9m.j6ZgZ.nceyn4W', NULL, NULL, 0, NULL, '2020-01-17 08:08:08', '2020-01-17 08:08:08'),
-(7, '161400020', 'Mubasshira Megh', '0123654789', 'megh@mail.com', NULL, NULL, '$2y$10$dJ66A/fhRBJ60URp3QAZcePRX2rUWIaYcijm5xz0BfK.x751FrR5i', NULL, NULL, 1, NULL, '2020-01-25 11:54:53', '2020-01-25 11:54:53'),
-(8, '161400006', 'Kaniz Afrin', '01625288868', 'sathi@mail.com', NULL, NULL, '$2y$10$p4flLf/2zYeUm70vYOmo7.ItP6e92k0lN.03jOPQCMtXOHNuaJRLC', NULL, NULL, 0, NULL, '2020-01-30 08:49:15', '2020-01-30 08:49:15');
+(2, '161400001', 'Hussain Imam Shanto', '01517092758', 'hussain.imambd@gmail.com', NULL, 'male', '$2y$10$QaoLuzScxd6p2pnbe/cP7etVCEYxA5KJZpUVbfEoP2/fCgWqYX8g.', 'A-', NULL, 1, NULL, '2020-01-09 20:43:58', '2020-01-09 20:43:58'),
+(3, '161400011', 'Syed M R Anas', '01300586874', 'anas@mail.com', NULL, 'male', '$2y$10$ieiRPx07pnUmxGgesNY1sOeFk7PRClX.4OXkElWe3pHY41g.4.ejy', 'B+', NULL, 1, NULL, '2020-01-13 07:55:27', '2020-01-13 07:55:27'),
+(4, '161400022', 'Kudrat-E-Elahi Chawdhury', '01954844212', 'mridul@mail.com', NULL, 'male', '$2y$10$.1sUvPVpCTVtnnr1PL9YAOCfkZM5GMpYoyzg6XbqlHZqpryYJ3Tzy', 'B-', NULL, 1, NULL, '2020-01-13 08:01:53', '2020-01-13 08:01:53'),
+(5, '161400017', 'Rasif Ismam', '01688386763', 'rasif@mail.com', NULL, 'male', '$2y$10$aquFs7MyHarBea1kphbY3uPXiqYJGCzzOpGGCFILAJ87j2YwLfDEq', 'AB+', NULL, 0, NULL, '2020-01-17 01:50:56', '2020-01-17 01:50:56'),
+(6, '161400026', 'Afsana Munni', '01700762678', 'munni@mail.com', NULL, NULL, '$2y$10$VofzmoJK6UKYG0AQWMdEPeUWGXeqW4fTh.I/e9m.j6ZgZ.nceyn4W', NULL, NULL, 0, NULL, '2020-01-17 02:08:08', '2020-01-17 02:08:08'),
+(7, '161400020', 'Mubasshira Megh', '0123654789', 'megh@mail.com', NULL, NULL, '$2y$10$dJ66A/fhRBJ60URp3QAZcePRX2rUWIaYcijm5xz0BfK.x751FrR5i', NULL, NULL, 1, NULL, '2020-01-25 05:54:53', '2020-01-25 05:54:53'),
+(8, '161400006', 'Kaniz Afrin', '01625288868', 'sathi@mail.com', NULL, NULL, '$2y$10$p4flLf/2zYeUm70vYOmo7.ItP6e92k0lN.03jOPQCMtXOHNuaJRLC', NULL, NULL, 0, NULL, '2020-01-30 02:49:15', '2020-01-30 02:49:15');
 
 --
 -- Indexes for dumped tables

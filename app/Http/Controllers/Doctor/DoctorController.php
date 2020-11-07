@@ -53,8 +53,8 @@ class DoctorController extends Controller
     }
 
     public function ManageAppoints(){
-        $approved = DB::table('appointments')->where('doctor_id',Auth::guard()->id())->where('status',1)->get();
-        $follow = DB::table('appointments')->where('doctor_id',Auth::guard()->id())->where('status',3)->get();
+        $approved = DB::table('appointments')->join('users','appointments.patient_id','users.id')->select('appointments.*','users.institute_id')->where('doctor_id',Auth::guard()->id())->where('appointments.status',1)->get();
+        $follow = DB::table('appointments')->join('users','appointments.patient_id','users.id')->select('appointments.*','users.institute_id')->where('doctor_id',Auth::guard()->id())->where('appointments.status',3)->get();
 
         return view('doctor.manage_appoints',compact('approved','follow'));
     }

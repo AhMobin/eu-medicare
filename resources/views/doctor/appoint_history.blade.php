@@ -36,7 +36,7 @@
                                     <th>{{ $his->id }}</th>
                                     <td>{{ $his->institute_id }}</td>
                                     <td>{{ $his->problem_desc }}</td>
-                                    <td>{{ $his->created_at }}</td>
+                                    <td>{{ Carbon\Carbon::make($his->appoint_date)->format('d M, Y') }}</td>
                                     <td>
                                         <a href="{{ url('view/appoint/history/'.$his->id) }}" class="btn btn-sm btn-success" title="View"><i class="fa fa-eye"></i></a>
                                     </td>

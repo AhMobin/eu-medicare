@@ -213,6 +213,7 @@ class AdminController extends Controller
                     ->join('specializes','appointments.specialize_id','specializes.id')
                     ->join('doctors','appointments.doctor_id','doctors.id')
                     ->select('appointments.*','users.institute_id','specializes.specialize_name','doctors.full_name')
+                    ->orderBy('appointments.status','asc')
                     ->get();
 
         return view('admin.appointments',compact('doc','appoints'));

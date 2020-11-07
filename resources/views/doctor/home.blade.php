@@ -124,7 +124,8 @@
                         </ul>
                     </li>
 
-                    <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-puzzle"></span><p>Medical History</p></a></li>
+{{--                        <li class="droplink"><a href="#" class="waves-effect waves-button"><span class="menu-icon icon-puzzle"></span><p>Medical History</p></a></li>--}}
+                    </ul>
                 </div><!-- Page Sidebar Inner -->
             </div><!-- Page Sidebar -->
 
