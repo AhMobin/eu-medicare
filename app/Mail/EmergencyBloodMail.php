@@ -16,6 +16,7 @@ class EmergencyBloodMail extends Mailable
      *
      * @return void
      */
+    public $donor;
     public function __construct($donor)
     {
         $this->donor = $donor;
@@ -28,6 +29,6 @@ class EmergencyBloodMail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.emergency_blood_mail')->with($donor);
+        return $this->markdown('emails.emergency_blood_mail');
     }
 }

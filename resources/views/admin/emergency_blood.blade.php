@@ -18,6 +18,7 @@
                                     <th>Blood Group</th>
                                     <th>Contact Number</th>
                                     <th>Location</th>
+                                    <th>Date</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -27,6 +28,7 @@
                                     <td>{{ strtoupper($row->req_blood_group) }}</td>
                                     <td>{{ $row->req_from_number }}</td>
                                     <td>{{ $row->patient_location }}</td>
+                                    <td>{{ $row->created_at }}</td>
                                     <td>
                                         <a href="{{ url('mail/to/donors/'.$row->req_blood_group) }}" class="btn btn-sm btn-danger" title="Call To Donate"><i class="icon icon-drop"></i></a>
                                         <a href="{{ url('remove/request/'.$row->id) }}" class="btn btn-sm btn-warning" id="delete" title="Remove"><i class="fa fa-trash"></i></a>

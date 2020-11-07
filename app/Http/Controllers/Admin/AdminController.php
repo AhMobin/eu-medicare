@@ -303,22 +303,19 @@ class AdminController extends Controller
     }
 
     public function MailForEmergency($blood){
-        $blood = DB::table('blood_donors')
+        $donors = DB::table('blood_donors')
         ->join('emergency_bloods','blood_donors.blood_group','emergency_bloods.req_blood_group')
         ->select('blood_donors.*','emergency_bloods.req_from_number')
         ->where('blood_donors.blood_group',$blood)->get();
-        //return response()->json($blood);
+//        return response()->json($blood);
+        foreach($donors as $donor){
+            Mail::to($donor->donor_email)->send(new EmergencyBloodMail($donor));
+        }
         $notification = array(
             'messege' => 'Mail Send To Donors',
             'alert-type' => 'success'
         );
         return Redirect()->back()->with($notification);
-
-        // foreach($blood as $donor){
-        //     Mail::to($donor->donor_email)->send(new EmergencyBloodMail($donor));
-        // }
-
-
     }
 
     public function RemoveRequest($id){
